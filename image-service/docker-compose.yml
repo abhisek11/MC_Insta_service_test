@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    environment:
+      AWS_ENDPOINT: http://localstack:4566
+    depends_on:
+      - localstack
+
+  localstack:
+    image: localstack/localstack
+    environment:
+      - SERVICES=s3
+      - DEFAULT_REGION=us-east-1
+      - DATA_DIR=/tmp/localstack/data
